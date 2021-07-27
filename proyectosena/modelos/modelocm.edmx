@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="modelocm.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="actualizacion">
+          <Key>
+            <PropertyRef Name="idactualizacion" />
+          </Key>
+          <Property Name="idactualizacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="registroad" Type="int" />
+          <Property Name="registroem" Type="int" />
+        </EntityType>
+        <EntityType Name="loginadministrador">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="int" Nullable="false" />
+          <Property Name="clave" Type="int" />
+        </EntityType>
+        <EntityType Name="loginempleado">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="int" Nullable="false" />
+          <Property Name="clave" Type="int" />
+        </EntityType>
+        <EntityType Name="registroad">
+          <Key>
+            <PropertyRef Name="registroad" />
+          </Key>
+          <Property Name="registroad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="30" />
+          <Property Name="apellido" Type="nchar" MaxLength="30" />
+          <Property Name="cargo" Type="nchar" MaxLength="30" />
+          <Property Name="correo" Type="nchar" MaxLength="30" />
+          <Property Name="cedula" Type="int" />
+        </EntityType>
+        <EntityType Name="registroem">
+          <Key>
+            <PropertyRef Name="registroem" />
+          </Key>
+          <Property Name="registroem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="30" />
+          <Property Name="apellido" Type="nchar" MaxLength="30" />
+          <Property Name="cargo" Type="nchar" MaxLength="30" />
+          <Property Name="correo" Type="nchar" MaxLength="30" />
+          <Property Name="edad" Type="int" />
+          <Property Name="telefono" Type="int" />
+          <Property Name="cedula" Type="int" />
+        </EntityType>
+        <EntityType Name="reportes">
+          <Key>
+            <PropertyRef Name="idreportes" />
+          </Key>
+          <Property Name="idreportes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idtestemple" Type="int" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="idtestemple" />
+          </Key>
+          <Property Name="idtestemple" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prg1" Type="nchar" MaxLength="30" />
+          <Property Name="prg2" Type="nchar" MaxLength="30" />
+          <Property Name="prg3" Type="nchar" MaxLength="30" />
+          <Property Name="prg4" Type="nchar" MaxLength="30" />
+          <Property Name="prg5" Type="nchar" MaxLength="30" />
+          <Property Name="prg6" Type="nchar" MaxLength="30" />
+          <Property Name="prg7" Type="nchar" MaxLength="30" />
+          <Property Name="prg8" Type="nchar" MaxLength="30" />
+          <Property Name="registroem" Type="int" />
+        </EntityType>
+        <Association Name="FK_actualizacion_registroad">
+          <End Role="registroad" Type="Self.registroad" Multiplicity="0..1" />
+          <End Role="actualizacion" Type="Self.actualizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="registroad">
+              <PropertyRef Name="registroad" />
+            </Principal>
+            <Dependent Role="actualizacion">
+              <PropertyRef Name="registroad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_actualizacion_registroem">
+          <End Role="registroem" Type="Self.registroem" Multiplicity="0..1" />
+          <End Role="actualizacion" Type="Self.actualizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="registroem">
+              <PropertyRef Name="registroem" />
+            </Principal>
+            <Dependent Role="actualizacion">
+              <PropertyRef Name="registroem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_registroad_loginadministrador">
+          <End Role="loginadministrador" Type="Self.loginadministrador" Multiplicity="0..1" />
+          <End Role="registroad" Type="Self.registroad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loginadministrador">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="registroad">
+              <PropertyRef Name="cedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_registroem_loginempleado">
+          <End Role="loginempleado" Type="Self.loginempleado" Multiplicity="0..1" />
+          <End Role="registroem" Type="Self.registroem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loginempleado">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="registroem">
+              <PropertyRef Name="cedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reportes_test">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="reportes" Type="Self.reportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="idtestemple" />
+            </Principal>
+            <Dependent Role="reportes">
+              <PropertyRef Name="idtestemple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_registroem">
+          <End Role="registroem" Type="Self.registroem" Multiplicity="0..1" />
+          <End Role="test" Type="Self.test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="registroem">
+              <PropertyRef Name="registroem" />
+            </Principal>
+            <Dependent Role="test">
+              <PropertyRef Name="registroem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="modelocmStoreContainer">
+          <EntitySet Name="actualizacion" EntityType="Self.actualizacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loginadministrador" EntityType="Self.loginadministrador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loginempleado" EntityType="Self.loginempleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="registroad" EntityType="Self.registroad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="registroem" EntityType="Self.registroem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reportes" EntityType="Self.reportes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test" EntityType="Self.test" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_actualizacion_registroad" Association="Self.FK_actualizacion_registroad">
+            <End Role="registroad" EntitySet="registroad" />
+            <End Role="actualizacion" EntitySet="actualizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_actualizacion_registroem" Association="Self.FK_actualizacion_registroem">
+            <End Role="registroem" EntitySet="registroem" />
+            <End Role="actualizacion" EntitySet="actualizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_registroad_loginadministrador" Association="Self.FK_registroad_loginadministrador">
+            <End Role="loginadministrador" EntitySet="loginadministrador" />
+            <End Role="registroad" EntitySet="registroad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_registroem_loginempleado" Association="Self.FK_registroem_loginempleado">
+            <End Role="loginempleado" EntitySet="loginempleado" />
+            <End Role="registroem" EntitySet="registroem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reportes_test" Association="Self.FK_reportes_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="reportes" EntitySet="reportes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_registroem" Association="Self.FK_test_registroem">
+            <End Role="registroem" EntitySet="registroem" />
+            <End Role="test" EntitySet="test" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="modelocm" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="modelocmContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="actualizacion" EntityType="modelocm.actualizacion" />
+          <EntitySet Name="loginadministrador" EntityType="modelocm.loginadministrador" />
+          <EntitySet Name="loginempleado" EntityType="modelocm.loginempleado" />
+          <EntitySet Name="registroad" EntityType="modelocm.registroad" />
+          <EntitySet Name="registroem" EntityType="modelocm.registroem" />
+          <EntitySet Name="reportes" EntityType="modelocm.reportes" />
+          <EntitySet Name="test" EntityType="modelocm.test" />
+          <AssociationSet Name="FK_actualizacion_registroad" Association="modelocm.FK_actualizacion_registroad">
+            <End Role="registroad" EntitySet="registroad" />
+            <End Role="actualizacion" EntitySet="actualizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_actualizacion_registroem" Association="modelocm.FK_actualizacion_registroem">
+            <End Role="registroem" EntitySet="registroem" />
+            <End Role="actualizacion" EntitySet="actualizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_registroad_loginadministrador" Association="modelocm.FK_registroad_loginadministrador">
+            <End Role="loginadministrador" EntitySet="loginadministrador" />
+            <End Role="registroad" EntitySet="registroad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_registroem_loginempleado" Association="modelocm.FK_registroem_loginempleado">
+            <End Role="loginempleado" EntitySet="loginempleado" />
+            <End Role="registroem" EntitySet="registroem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_registroem" Association="modelocm.FK_test_registroem">
+            <End Role="registroem" EntitySet="registroem" />
+            <End Role="test" EntitySet="test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reportes_test" Association="modelocm.FK_reportes_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="reportes" EntitySet="reportes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="actualizacion">
+          <Key>
+            <PropertyRef Name="idactualizacion" />
+          </Key>
+          <Property Name="idactualizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="registroad" Type="Int32" />
+          <Property Name="registroem" Type="Int32" />
+          <NavigationProperty Name="registroad1" Relationship="modelocm.FK_actualizacion_registroad" FromRole="actualizacion" ToRole="registroad" />
+          <NavigationProperty Name="registroem1" Relationship="modelocm.FK_actualizacion_registroem" FromRole="actualizacion" ToRole="registroem" />
+        </EntityType>
+        <EntityType Name="loginadministrador">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="Int32" Nullable="false" />
+          <Property Name="clave" Type="Int32" />
+          <NavigationProperty Name="registroad" Relationship="modelocm.FK_registroad_loginadministrador" FromRole="loginadministrador" ToRole="registroad" />
+        </EntityType>
+        <EntityType Name="loginempleado">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="Int32" Nullable="false" />
+          <Property Name="clave" Type="Int32" />
+          <NavigationProperty Name="registroem" Relationship="modelocm.FK_registroem_loginempleado" FromRole="loginempleado" ToRole="registroem" />
+        </EntityType>
+        <EntityType Name="registroad">
+          <Key>
+            <PropertyRef Name="registroad1" />
+          </Key>
+          <Property Name="registroad1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="cargo" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="correo" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="cedula" Type="Int32" />
+          <NavigationProperty Name="actualizacion" Relationship="modelocm.FK_actualizacion_registroad" FromRole="registroad" ToRole="actualizacion" />
+          <NavigationProperty Name="loginadministrador" Relationship="modelocm.FK_registroad_loginadministrador" FromRole="registroad" ToRole="loginadministrador" />
+        </EntityType>
+        <EntityType Name="registroem">
+          <Key>
+            <PropertyRef Name="registroem1" />
+          </Key>
+          <Property Name="registroem1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="cargo" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="correo" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="edad" Type="Int32" />
+          <Property Name="telefono" Type="Int32" />
+          <Property Name="cedula" Type="Int32" />
+          <NavigationProperty Name="actualizacion" Relationship="modelocm.FK_actualizacion_registroem" FromRole="registroem" ToRole="actualizacion" />
+          <NavigationProperty Name="loginempleado" Relationship="modelocm.FK_registroem_loginempleado" FromRole="registroem" ToRole="loginempleado" />
+          <NavigationProperty Name="test" Relationship="modelocm.FK_test_registroem" FromRole="registroem" ToRole="test" />
+        </EntityType>
+        <EntityType Name="reportes">
+          <Key>
+            <PropertyRef Name="idreportes" />
+          </Key>
+          <Property Name="idreportes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idtestemple" Type="Int32" />
+          <NavigationProperty Name="test" Relationship="modelocm.FK_reportes_test" FromRole="reportes" ToRole="test" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="idtestemple" />
+          </Key>
+          <Property Name="idtestemple" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prg1" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="prg2" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="prg3" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="prg4" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="prg5" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="prg6" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="prg7" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="prg8" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="registroem" Type="Int32" />
+          <NavigationProperty Name="registroem1" Relationship="modelocm.FK_test_registroem" FromRole="test" ToRole="registroem" />
+          <NavigationProperty Name="reportes" Relationship="modelocm.FK_reportes_test" FromRole="test" ToRole="reportes" />
+        </EntityType>
+        <Association Name="FK_actualizacion_registroad">
+          <End Type="modelocm.registroad" Role="registroad" Multiplicity="0..1" />
+          <End Type="modelocm.actualizacion" Role="actualizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="registroad">
+              <PropertyRef Name="registroad1" />
+            </Principal>
+            <Dependent Role="actualizacion">
+              <PropertyRef Name="registroad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_actualizacion_registroem">
+          <End Type="modelocm.registroem" Role="registroem" Multiplicity="0..1" />
+          <End Type="modelocm.actualizacion" Role="actualizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="registroem">
+              <PropertyRef Name="registroem1" />
+            </Principal>
+            <Dependent Role="actualizacion">
+              <PropertyRef Name="registroem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_registroad_loginadministrador">
+          <End Type="modelocm.loginadministrador" Role="loginadministrador" Multiplicity="0..1" />
+          <End Type="modelocm.registroad" Role="registroad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loginadministrador">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="registroad">
+              <PropertyRef Name="cedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_registroem_loginempleado">
+          <End Type="modelocm.loginempleado" Role="loginempleado" Multiplicity="0..1" />
+          <End Type="modelocm.registroem" Role="registroem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loginempleado">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="registroem">
+              <PropertyRef Name="cedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_registroem">
+          <End Type="modelocm.registroem" Role="registroem" Multiplicity="0..1" />
+          <End Type="modelocm.test" Role="test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="registroem">
+              <PropertyRef Name="registroem1" />
+            </Principal>
+            <Dependent Role="test">
+              <PropertyRef Name="registroem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reportes_test">
+          <End Type="modelocm.test" Role="test" Multiplicity="0..1" />
+          <End Type="modelocm.reportes" Role="reportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="idtestemple" />
+            </Principal>
+            <Dependent Role="reportes">
+              <PropertyRef Name="idtestemple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="modelocm" />
+        <Alias Key="Target" Value="modelocm.Store" />
+        <EntityContainerMapping CdmEntityContainer="modelocmContainer" StorageEntityContainer="modelocmStoreContainer">
+          <EntitySetMapping Name="actualizacion">
+            <EntityTypeMapping TypeName="modelocm.actualizacion">
+              <MappingFragment StoreEntitySet="actualizacion">
+                <ScalarProperty Name="registroem" ColumnName="registroem" />
+                <ScalarProperty Name="registroad" ColumnName="registroad" />
+                <ScalarProperty Name="idactualizacion" ColumnName="idactualizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loginadministrador">
+            <EntityTypeMapping TypeName="modelocm.loginadministrador">
+              <MappingFragment StoreEntitySet="loginadministrador">
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loginempleado">
+            <EntityTypeMapping TypeName="modelocm.loginempleado">
+              <MappingFragment StoreEntitySet="loginempleado">
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registroad">
+            <EntityTypeMapping TypeName="modelocm.registroad">
+              <MappingFragment StoreEntitySet="registroad">
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="registroad1" ColumnName="registroad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registroem">
+            <EntityTypeMapping TypeName="modelocm.registroem">
+              <MappingFragment StoreEntitySet="registroem">
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="registroem1" ColumnName="registroem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reportes">
+            <EntityTypeMapping TypeName="modelocm.reportes">
+              <MappingFragment StoreEntitySet="reportes">
+                <ScalarProperty Name="idtestemple" ColumnName="idtestemple" />
+                <ScalarProperty Name="idreportes" ColumnName="idreportes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test">
+            <EntityTypeMapping TypeName="modelocm.test">
+              <MappingFragment StoreEntitySet="test">
+                <ScalarProperty Name="registroem" ColumnName="registroem" />
+                <ScalarProperty Name="prg8" ColumnName="prg8" />
+                <ScalarProperty Name="prg7" ColumnName="prg7" />
+                <ScalarProperty Name="prg6" ColumnName="prg6" />
+                <ScalarProperty Name="prg5" ColumnName="prg5" />
+                <ScalarProperty Name="prg4" ColumnName="prg4" />
+                <ScalarProperty Name="prg3" ColumnName="prg3" />
+                <ScalarProperty Name="prg2" ColumnName="prg2" />
+                <ScalarProperty Name="prg1" ColumnName="prg1" />
+                <ScalarProperty Name="idtestemple" ColumnName="idtestemple" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

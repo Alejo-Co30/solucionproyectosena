@@ -1,0 +1,59 @@
+﻿body {
+    background: url(/img/logo.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: snow;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial;
+}
+
+.menu a:link {
+    background-color: #e3ffff;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+div .menu ul {
+    list-style-type: none;
+}
+
+.menu {
+    margin: auto;
+    width: 40%;
+    padding: 10px;
+    text-align: center;
+}
+
+.cop {
+    text-align: center;
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+div .redes {
+    list-style-type: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+    div .redes a {
+        cursor: pointer;
+    }
+
+    div .redes img {
+        Height: 30px;
+        Width: 30px;
+        border-radius: 12px;
+    }

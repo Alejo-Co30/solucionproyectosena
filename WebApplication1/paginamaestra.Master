@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="paginamaestra.master.cs" Inherits="proyectosena.paginamaestra" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <link href="css/StyleSheet22.css" rel="stylesheet"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <!--contenido head-->
+    </asp:ContentPlaceHolder>
+</head>
+<body><!--contenido body-->
+    
+     <div>
+       <header>
+         <h1>CONTROL DE MOTIVACIONES HUMANAS</h1>
+         <div class="menu" >
+             <ul>
+                 <li><a href="login2.aspx">TEST</a></li>
+             </ul>
+             <ul>
+                <li><a href="login.aspx">ADMINISTRADOR</a></li>
+            </ul>
+             <ul>
+                <li><a href="index.aspx">INICIO</a></li>
+            </ul>
+         </div>
+     </header>
+         <div class="conp">
+             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+            </asp:ContentPlaceHolder>
+         </div>
+     <footer>
+         <p class="cop">DERECHOS RESERVADOS</p>
+         <div class="redes">
+            <a href="https://web.whatsapp.com/"><img src="img/Whatsapp.png" alt="whatsapp" /></a><b>whatsapp</b>
+            <a href="https://twitter.com/"><img src="img/Twitter.png" alt="twitter" /></a><b>twitter</b>
+            <a href="https://www.facebook.com/"><img src="img/facebook.png" alt="facebook" /></a><b>facebook</b>
+            <a href="https://www.instagram.com/"><img src ="img/Instagram.png" alt="instagram" /></a><b>instagram</b>
+            </div>
+         </footer>
+     </div>
+      
+   
+</body>
+</html>

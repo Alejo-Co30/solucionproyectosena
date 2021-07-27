@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3cee5ba32cc646e4977378a094220027" Name="Diagram1" ZoomLevel="95" >
+        <EntityTypeShape EntityType="modelocm.actualizacion" Width="1.625" PointX="10.5" PointY="3" />
+        <EntityTypeShape EntityType="modelocm.loginadministrador" Width="1.625" PointX="3.5" PointY="2.5" />
+        <EntityTypeShape EntityType="modelocm.loginempleado" Width="1.625" PointX="1.375" PointY="4.625" />
+        <EntityTypeShape EntityType="modelocm.registroad" Width="1.625" PointX="7.375" PointY="2.5" />
+        <EntityTypeShape EntityType="modelocm.registroem" Width="1.625" PointX="3.375" PointY="4.375" />
+        <EntityTypeShape EntityType="modelocm.reportes" Width="1.625" PointX="8.5" PointY="5.625" />
+        <EntityTypeShape EntityType="modelocm.test" Width="1.625" PointX="6.125" PointY="5.125" />
+        <AssociationConnector Association="modelocm.FK_actualizacion_registroad" />
+        <AssociationConnector Association="modelocm.FK_actualizacion_registroem" />
+        <AssociationConnector Association="modelocm.FK_registroad_loginadministrador" />
+        <AssociationConnector Association="modelocm.FK_registroem_loginempleado" />
+        <AssociationConnector Association="modelocm.FK_test_registroem" />
+        <AssociationConnector Association="modelocm.FK_reportes_test" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
